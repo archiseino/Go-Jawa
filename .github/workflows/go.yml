@@ -38,7 +38,7 @@ jobs:
     - name: Setup Golang-Migrate CLI
       run: |
         curl -L https://github.com/golang-migrate/migrate/releases/download/v4.18.2/migrate.linux-amd64.tar.gz | tar xvz
-        mv ./migrate.linux-amd64 /usr/local/bin/migrate
+        mv ./migrate /usr/bin/migrate
         which migrate
 
     - name: Run Migration
@@ -46,3 +46,5 @@ jobs:
 
     - name: Run Test
       run: make test
+
+      
