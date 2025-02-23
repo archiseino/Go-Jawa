@@ -37,17 +37,8 @@ jobs:
 
     - name: Setup Golang-Migrate CLI
       run: |
-        curl -L https://github.com/golang-migrate/migrate/releases/download/v4.18.2/migrate.linux-amd64.tar.gz
-        
-        ## Get the first file name in the tar.gz
-        FILE_NAME=$(tar -tzf migrate.linux-amd64.tar.gz | head -n 1)
-        
-        ## Extract the file
-        tar -xvf migrate.linux-amd64.tar.gz
-
-        ## Move the file to /usr/local/bin
-        mv $FILE_NAME /usr/local/bin/migrate
-
+        curl -L https://github.com/golang-migrate/migrate/releases/download/v4.18.2/migrate.linux-amd64.tar.gz | tar xvz
+        mv ./migrate /usr/local/bin/migrate
         which migrate
 
     - name: Run Migration
