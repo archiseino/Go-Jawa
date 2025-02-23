@@ -24,4 +24,4 @@ viewcoverage:
 
 .PHONY: clean
 clean: 
-	postgres createdb dropdb migrateup migratedown
+	postgres createdb dropdb migrateup migratedown test viewcoverage
