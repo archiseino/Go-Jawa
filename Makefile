@@ -22,6 +22,9 @@ test:
 viewcoverage:
 	go tool cover -func=coverage.out
 
+server:
+	go run main.go
+
 .PHONY: clean
 clean: 
 	postgres createdb dropdb migrateup migratedown test viewcoverage
