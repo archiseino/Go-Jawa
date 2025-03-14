@@ -8,24 +8,22 @@ import (
 	db "github.com/techschool/simplebank/db/sqlc"
 )
 
-type CreateAccountRequest struct {
+type createAccountRequest struct {
 	Owner string `json:"owner" binding:"required"`
-	Currency string `json:"currency" binding:"required"` 
+	Currency string `json:"currency" binding:"required,currency"` 
 }
 
 func (server *Server) createAccount(ctx *gin.Context) {
-	var req CreateAccountRequest
-
-	// Handle Incoming JSON req
+	var req createAccountRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
 	}
 
 	arg := db.CreateAccountParams{
-		Owner: req.Owner,
-		Balance: 0,
+		Owner:    req.Owner,
 		Currency: req.Currency,
+		Balance:  0,
 	}
 
 	account, err := server.store.CreateAccount(ctx, arg)
@@ -35,7 +33,7 @@ func (server *Server) createAccount(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusOK, account)
-} 
+}
 
 type GetAccountRequest struct {
 	ID int64 `uri:"id" binding:"required,min=1"`
