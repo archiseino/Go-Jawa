@@ -10,10 +10,6 @@ import (
 	util "github.com/techschool/simplebank/util"
 )
 
-const (
-	dbDriver = "postgres"
-	dbSource = "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable"
-)
 
 var testQueries *Queries
 var testDB *sql.DB
