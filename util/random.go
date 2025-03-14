@@ -51,6 +51,6 @@ func RandCurrency() string {
 }
 
 // RandomEmail generates a random email
-func RandomEmail() string {
+func RandEmail() string {
 	return fmt.Sprintf("%s@email.com", RandString(6))
 }
