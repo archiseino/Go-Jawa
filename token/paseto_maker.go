@@ -29,19 +29,19 @@ func NewPasetoMaker(symmetricKey string) (Maker, error) {
 }
 
 // Implementing the Payload interface
-func (maker *PasetoMaker) CreateToken(username string, role string, duration time.Duration) (string, *Payload, error) {
-	payload, err := NewPayload(username, role, duration)
+func (maker *PasetoMaker) CreateToken(username string, duration time.Duration) (string, error) {
+	payload, err := NewPayload(username, duration)
 	if err != nil {
-		return "", payload, err
+		return "", err
 	}
 
 	// Encrypt the payload
 	token, err := maker.paseto.Encrypt(maker.symmetricKey, payload, nil)
 	if err != nil {
-		return "", payload, err
+		return "", err
 	}
 
-	return token, payload, nil
+	return token, nil
 }
 
 

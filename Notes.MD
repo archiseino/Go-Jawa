@@ -64,3 +64,12 @@ type createAccountRequest struct {
 
 ## Go-Mock Matcher Stuff
 Test double matcher in go is confusing
+
+## Golang Interface Casting
+How does Interface work and why can you cast it.
+
+## Rule Authorization
+![alt text](assets/image.png)
+
+## Notes:
+`ctx.MustGet`
